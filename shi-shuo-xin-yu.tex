@@ -1,0 +1,158 @@
+\documentclass{book}
+
+\def\titlename{世说新语}
+\def\authorname{刘义庆}
+\title{\titlename{}}
+\author{\authorname{} 编}
+\date{}
+
+% margins
+% \usepackage[top=.7in, bottom=1in, left=.7in, right=.7in]{geometry}
+
+%% use colors
+\usepackage{xcolor}
+\definecolor{lightblue}{RGB}{39, 104, 192}
+\definecolor{silver}{RGB}{200,191,231}
+\definecolor{lightpurple}{RGB}{200,200,240}
+
+\usepackage{paracol} % multi-column parallel text
+\setlength\columnsep{18pt}
+\footnotelayout{m} % merged page-wise footnote layout for paracol
+
+% \usepackage{everypage}
+% \AddEverypageHook{\setcounter{footnote}{0}} % per-page footnote counter
+% known bug with paracol:
+%   last footnote from previous page can be pushed to the current page
+
+%%***********************************************
+%% Fonts
+%%***********************************************
+
+%% English;
+\usepackage[no-math]{fontspec}
+\setmainfont[Mapping=tex-text]{Times New Roman}
+% \setsansfont[Mapping=tex-text]{Calibri}
+% \setmonofont{Courier New}
+
+%% Chinese;
+\usepackage[
+    CheckSingle, 
+    CheckFullRight, 
+    CJKnumber,
+    % NoBreakCS = { \footnote },
+]{xeCJK}
+\setCJKmainfont[BoldFont = {Microsoft YaHei}, ItalicFont = {KaiTi}]{FangSong}
+% \setCJKsansfont{}
+% \setCJKmonofont{KaiTi}
+\punctstyle{quanjiao}
+% \newcommand{\CJKdash}{\rule[3.5pt]{9pt}{.77pt} \hspace{-1.5mm} \rule[3.5pt]{9pt}{.77pt} }
+
+%%***********************************************
+%% Looking
+%%***********************************************
+
+%% links
+\usepackage[bookmarksnumbered, pdfencoding=auto, pdfborder=1, breaklinks,
+colorlinks, linkcolor=lightblue, urlcolor=blue]{hyperref}
+\hypersetup{
+    pdftoolbar=true,         % show Acrobat toolbar?
+    pdfmenubar=true,         % show Acrobat menu?
+    pdfauthor={Jinyao Yuan}, % author
+    pdfcreator={\LaTeX},     % creator of the document
+    citecolor=green,         % color of links to bibliography
+    filecolor=magenta,       % color of file links
+}
+
+%% page style
+%%---------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\titlename}
+\fancyhead[LO]{\leftmark}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand\chaptermark[1]{\markboth{#1}{}}
+
+%% paragraphs
+%%---------------------------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+% \doublespacing
+\setlength{\parindent}{2em}
+\addtolength{\parskip}{3pt}
+\usepackage{indentfirst}
+
+%% emphasis
+%%---------------------------------------------------------------------------
+\def\emshape{\itshape}
+\makeatletter
+\DeclareRobustCommand{\em}{%
+    \@nomath\em \if b\expandafter\@car\f@series\@nil \normalfont
+    \else \emshape \fi
+}
+\makeatother
+\DeclareTextFontCommand{\emph}{\em}
+
+%% convert terms into Chinese;
+%%---------------------------------------------------------------------------
+\renewcommand{\contentsname}{\hfill 目~录 \hfill}
+%\renewcommand{\listfigurename}{图目录}
+%\renewcommand{\listtablename}{表目录}
+%\renewcommand{\thepart}{\CJKnumber{\arabic{part}}}
+\renewcommand{\partname}{第\CJKnumber{\thepart}章}
+%\renewcommand{\thesection}{\CJKnumber{\arabic{section}}}
+%\newcommand{\sectionname}{\thesection 节}
+%\renewcommand{\figurename}{图}
+%\renewcommand{\figureautorefname}{图}
+%\renewcommand{\tablename}{表}
+%\renewcommand{\tableautorefname}{表}
+%\renewcommand {\thefootnote}{\arabic{footnote}}
+%\renewcommand{\footnoteautorefname}{脚注}
+%\renewcommand{\abstractname}{摘 \quad 要}
+%\renewcommand{\appendixname}{附录{\thechapter}}
+%\renewcommand{\appendixautorefname}{附录}
+%\renewcommand{\bibname}{参考文献}
+%\renewcommand{\indexname}{索引}
+
+%% make own style of section titles;
+%%---------------------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\chapter}{\Huge\it\raggedleft}{}{0em}{}
+\titleformat{\section}{\centering}{{\color{lightgray}\arabic{section}}}{0em}{}
+
+%% make own style of table of contents;
+%%---------------------------------------------------------------------------
+\usepackage{titletoc}
+\titlecontents{chapter}[0em]{\addvspace{10pt}\filright\bf\large}
+{\def\numberline##1{}}
+{}{\titlerule*[8pt]{.}\contentspage}
+
+%%***********************************************
+%% Utilities
+%%***********************************************
+
+%% Margin notes;
+%%---------------------------------------------------------------------------
+% \usepackage{marginnote}
+% \marginparsep 2em
+% \marginparwidth 2.5in
+
+%%***********************************************
+%% START
+%%***********************************************
+\begin{document}
+
+\frontmatter
+\maketitle
+\setcounter{tocdepth}{0}
+\tableofcontents
+
+\mainmatter
+\input{text.tex}
+
+\end{document}
+
