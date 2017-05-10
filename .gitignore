@@ -1,0 +1,11 @@
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+shi-shuo-xin-yu.pdf
+*.synctex.gz
+*.toc
+*.swp
+*.un~
