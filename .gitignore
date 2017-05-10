@@ -5,7 +5,8 @@
 *.log
 *.out
 shi-shuo-xin-yu.pdf
-*.synctex.gz
+*.synctex.gz*
 *.toc
 *.swp
 *.un~
+.*~
