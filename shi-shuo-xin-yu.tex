@@ -46,6 +46,7 @@
 % \setCJKmonofont{KaiTi}
 \punctstyle{quanjiao}
 % \newcommand{\CJKdash}{\rule[3.5pt]{9pt}{.77pt} \hspace{-1.5mm} \rule[3.5pt]{9pt}{.77pt} }
+\usepackage{zhnumber}
 
 %%***********************************************
 %% Looking
@@ -103,9 +104,9 @@ colorlinks, linkcolor=lightblue, urlcolor=blue]{hyperref}
 %\renewcommand{\listfigurename}{图目录}
 %\renewcommand{\listtablename}{表目录}
 %\renewcommand{\thepart}{\CJKnumber{\arabic{part}}}
-\renewcommand{\partname}{第\CJKnumber{\thepart}章}
-%\renewcommand{\thesection}{\CJKnumber{\arabic{section}}}
-%\newcommand{\sectionname}{\thesection 节}
+\renewcommand{\partname}{第\zhnumber{\thepart}部}
+\renewcommand{\thechapter}{\zhnumber{\arabic{chapter}}}
+\renewcommand{\thesection}{\zhnumber{\arabic{section}}}
 %\renewcommand{\figurename}{图}
 %\renewcommand{\figureautorefname}{图}
 %\renewcommand{\tablename}{表}
