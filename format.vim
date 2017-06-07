@@ -22,14 +22,14 @@ for pair in replace_patterns
 endfor
 
 " remove whitespaces before chinese punctuations
-" \S: 
-"   something not whitespace to enssure that the spaces are not indentation
+" [^ 	%]:
+"   something not whitespace or comment marker to enssure that the spaces are not indentation
 " \zs\s\+\ze: 
 "   the whitespaces to be removed
 " \(...\): 
 "   make sure it is the whitespaces that are followed by chinese punctuations
 "   that we are removing
-%s+\S\zs\s\+\ze\(，\|。\|：\|「\|」\|『\|』\|（\|）\|？\|！\)++ge
+%s+[^ 	%]\zs\s\+\ze\(，\|。\|：\|「\|」\|『\|』\|（\|）\|？\|！\)++ge
 
 " highlights
 if has('autocmd')
