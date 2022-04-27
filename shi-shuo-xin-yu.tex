@@ -121,9 +121,9 @@ colorlinks, linkcolor=lightblue, urlcolor=blue]{hyperref}
 
 %% make own style of section titles;
 %%---------------------------------------------------------------------------
-\usepackage{titlesec}
+\usepackage[nobottomtitles]{titlesec}
 \titleformat{\chapter}{\Huge\it\raggedleft}{}{0em}{}
-\titleformat{\section}{\centering}{{\color{lightgray}\arabic{section}}}{0em}{}
+\titleformat{\section}{\centering\color{lightgray}}{\arabic{section}}{0em}{}
 
 %% make own style of table of contents;
 %%---------------------------------------------------------------------------
