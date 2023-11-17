@@ -52,6 +52,8 @@
 %% Looking
 %%***********************************************
 
+\usepackage{scrextend}
+
 %% links
 \usepackage[bookmarksnumbered, pdfencoding=auto, pdfborder=1, breaklinks,
 colorlinks, linkcolor=lightblue, urlcolor=blue]{hyperref}
@@ -86,6 +88,28 @@ colorlinks, linkcolor=lightblue, urlcolor=blue]{hyperref}
 \setlength{\parindent}{2.1em}
 \addtolength{\parskip}{3pt}
 \usepackage{indentfirst}
+
+%% footnotes
+%%---------------------------------------------------------------------------
+
+\deffootnote[2em]{0em}{2em}{
+  \textsuperscript{\thefootnotemark}%
+}
+
+\let\oldparacol\paracol
+\let\oldendparacol\endparacol
+\renewenvironment{paracol}[2][]%
+{% \begine{paracol}
+  \if\relax\detokenize{#1}\relax%
+    \oldparacol{#2}%
+  \else%
+    \oldparacol[#1]{#2}%
+  \fi%
+  \let\oldfootnote\footnote%
+  \renewcommand\footnote[1]{\oldfootnote{\setstretch{1}##1}}%
+}{% \end{paracol}
+  \oldendparacol%
+}
 
 %% emphasis
 %%---------------------------------------------------------------------------
@@ -153,6 +177,7 @@ colorlinks, linkcolor=lightblue, urlcolor=blue]{hyperref}
 \tableofcontents
 
 \mainmatter
+
 \input{01-dexing.tex}
 \input{02-yanyu.tex}
 
