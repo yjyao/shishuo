@@ -1,10 +1,13 @@
+# All shi-shuo-xin-yu.* files are generated 
+# except for the source .tex file.
+shi-shuo-xin-yu.*
+!shi-shuo-xin-yu.tex
 
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 *.out
-shi-shuo-xin-yu.pdf
 *.synctex.gz*
 *.toc
 *.swp
